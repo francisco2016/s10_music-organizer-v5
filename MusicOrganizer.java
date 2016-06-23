@@ -39,6 +39,20 @@ public class MusicOrganizer
     }
     
     /**
+     * añade un método a la clase MusicOrganizer llamado findInTitle que tome un único parámetro de tipo String y
+     * muestre por pantalla la información de los tracks que contienen dicha cadena en el título de la canción.
+     * -------------------------------------------------  0052
+     */
+    public void findInTitle(String cadena){//necesitamos un for para recorrer la colección de trakc.
+        for(Track track: tracks){
+            if(track.getTitle().contains(cadena)){
+                 System.out.println(track.getDetails());
+            }
+        }
+    
+    }
+    
+    /**
      * Add a track to the collection.
      * @param track The track to be added.
      */
