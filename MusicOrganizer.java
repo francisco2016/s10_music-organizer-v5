@@ -15,7 +15,8 @@ public class MusicOrganizer
     private MusicPlayer player;
     // A reader that can read music files and load them as tracks.
     private TrackReader reader;
-
+    private Track tra;
+    
     /**
      * Create a MusicOrganizer
      */
@@ -27,6 +28,7 @@ public class MusicOrganizer
         readLibrary("audio");
         System.out.println("Music library loaded. " + getNumberOfTracks() + " tracks.");
         System.out.println();
+        tra = new Track();
     }
     
     /**
@@ -70,8 +72,21 @@ public class MusicOrganizer
         if(indexValid(index)) {
             Track track = tracks.get(index);
             player.startPlaying(track.getFilename());
-            System.out.println("Now playing: " + track.getArtist() + " - " + track.getTitle());
+            System.out.println("Now playing: " + track.getArtist() + " - " + track.getTitle()
+                                    + " Nº de veces escuchado: " +track.vecesReproducida());
         }
+     
+    }
+    
+    /**
+     * Play the first track in the collection, if there is one.
+     */
+    public void playFirst()
+    {
+        if(tracks.size() > 0) {
+            player.startPlaying(tracks.get(0).getFilename());
+        }
+        
     }
     
     /**
@@ -91,7 +106,7 @@ public class MusicOrganizer
     {
         System.out.print("Track " + index + ": ");
         Track track = tracks.get(index);
-        System.out.println(track.getDetails());
+        System.out.println(track.getDetails()  );
     }
     
     /**
@@ -99,10 +114,11 @@ public class MusicOrganizer
      */
     public void listAllTracks()
     {
-        System.out.println("Track listing: ");
+        System.out.println("Track listing: ******************** ");
+         System.out.println();
 
         for(Track track : tracks) {
-            System.out.println(track.getDetails());
+            System.out.println(track.getDetails() );
         }
         System.out.println();
     }
@@ -128,16 +144,6 @@ public class MusicOrganizer
     {
         if(indexValid(index)) {
             tracks.remove(index);
-        }
-    }
-    
-    /**
-     * Play the first track in the collection, if there is one.
-     */
-    public void playFirst()
-    {
-        if(tracks.size() > 0) {
-            player.startPlaying(tracks.get(0).getFilename());
         }
     }
     
