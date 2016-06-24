@@ -15,6 +15,8 @@ public class Track
     private String filename;
         // El objetivo de este atributo es llevar la cuenta de las veces que se ha reproducido una canción.
     private int playCount;
+    // indica el año de edicción del track.  ----------------0053
+    private int anoEdit;
 
     /**
      * Constructor for objects of class Track.
@@ -26,6 +28,7 @@ public class Track
     {
         setDetails(artist, title, filename);
         playCount = 0;
+        anoEdit = 0;
     }
     
     /**
@@ -52,6 +55,20 @@ public class Track
      */
     public void sumaReproduciones(){
         playCount ++;
+    }
+    
+    /**
+     * para asignar un valor al at. anoEdit
+     */
+    public void setAnoEdicion(int anoE){
+       anoEdit = anoE;
+    }
+    
+    /**
+     * retorna el valor del at. anoEdit     ------------0053
+     */
+    public int getAnoEdicion(){
+        return anoEdit;
     }
     
     /**
@@ -94,7 +111,8 @@ public class Track
      */
     public String getDetails()
     {
-         return artist + ": " + title + "  (file: " + filename + "). Veces reproducida: " +playCount ;
+         return artist + ": " +title + " (file: " + filename + ").\n                            Año de producción; " +
+                            anoEdit+ " Veces reproducida: " +playCount ;
     }
     
     /**
