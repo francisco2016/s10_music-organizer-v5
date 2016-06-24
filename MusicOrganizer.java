@@ -49,7 +49,14 @@ public class MusicOrganizer
                  System.out.println(track.getDetails());
             }
         }
+    }
     
+    /**
+     *para poder fijar el valor del atributo anoEdit de la cl Track a un determinado track del organizador.
+     * ------------------------------------------------ 0053
+     */
+    public void setAnoEdit2(int index, int anoEdicion){
+        tracks.get(index).setAnoEdicion(anoEdicion);
     }
     
     /**

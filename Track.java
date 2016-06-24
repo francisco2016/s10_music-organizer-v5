@@ -61,11 +61,16 @@ public class Track
      * para asignar un valor al at. anoEdit
      */
     public void setAnoEdicion(int anoE){
-       anoEdit = anoE;
+      if(anoE < 1916 || anoE > 2016){ 
+          anoEdit = 1977;
+      }
+      else{
+          anoEdit = anoE;
+      }
     }
     
     /**
-     * retorna el valor del at. anoEdit     ------------0053
+     * retorna el valor del at. anoEdit     ---------------------------------------------------0053
      */
     public int getAnoEdicion(){
         return anoEdit;
