@@ -48,6 +48,20 @@ public class Track
     }
     
     /**
+     * incrementa el contador de reproduciones en 1.¨----------------------------------------  0052
+     */
+    public void sumaReproduciones(){
+        playCount ++;
+    }
+    
+    /**
+     * pone el contador de reproduciones a cero
+     */
+    public void contadorR_0(){
+        playCount = 0;
+    }
+    
+    /**
      * Return the artist.
      * @return The artist.
      */
