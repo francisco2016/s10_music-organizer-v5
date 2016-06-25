@@ -15,6 +15,8 @@ public class MusicOrganizer
     private MusicPlayer player;
     // A reader that can read music files and load them as tracks.
     private TrackReader reader;
+    // informe por pantalla de si está reproduciendo un track completo o si no. --------------------------- 0054
+    private boolean estaRepro;
     
     /**
      * Create a MusicOrganizer
@@ -24,6 +26,7 @@ public class MusicOrganizer
         tracks = new ArrayList<Track>();
         player = new MusicPlayer();
         reader = new TrackReader();
+        estaRepro = false;      //--------------------------- 0054
         readLibrary("audio");
         System.out.println("Music library loaded. " + getNumberOfTracks() + " tracks.");
         System.out.println();
@@ -60,6 +63,21 @@ public class MusicOrganizer
     }
     
     /**
+     * isPlaying que cuando sea invocado informe por pantalla de si en este momento se está reproduciendo un track completo o no 
+     * ----------------------------------------------------------------- 00 54
+     */
+    public void isPlaying(){
+        if(estaRepro == true){
+            System.out.println("--                              --.");
+            System.out.println("En este momento se está reproduciendo uno de los tracks.");
+        }
+        else{
+             System.out.println("--                              --.");
+            System.out.println("En este momento no se está reproduciendo ninguno de los tracks.");
+        }
+    }
+    
+    /**
      * Add a track to the collection.
      * @param track The track to be added.
      */
@@ -77,6 +95,7 @@ public class MusicOrganizer
         if(indexValid(index)) {
             Track track = tracks.get(index);
             player.startPlaying(track.getFilename());
+            estaRepro = true;
             System.out.println("Now playing: " + track.getArtist() + " - " + track.getTitle()
                                     + " Nº de veces escuchado: " +track.vecesReproducida());
         }
@@ -91,6 +110,7 @@ public class MusicOrganizer
         if(tracks.size() > 0) {
             player.startPlaying(tracks.get(0).getFilename());
             tracks.get(0).vecesReproducida();
+            estaRepro = true;
         }
         
     }
@@ -159,6 +179,7 @@ public class MusicOrganizer
     public void stopPlaying()
     {
         player.stop();
+        estaRepro = false;
     }
 
     /**
