@@ -91,13 +91,27 @@ public class MusicOrganizer
     }
     
     /**
-     *  que permita eliminar del organizador los tracks que contengan un determinado artista usando un iterador.
+     *  que permita eliminar del organizador los tracks que contengan un determinado artista usando un iterador. ------- 0055
      */
     public void removeByArtist(String nameArtist){
         Iterator<Track> it = tracks.iterator();
         while(it.hasNext()){
             Track a = it.next();
             if(a.getArtist().contains(nameArtist)){
+                it.remove();
+            }
+        }
+    }
+    
+    /**
+     *permita eliminar del organizador los tracks que contengan una determinada cadena en el título de la canción
+     *usando un iterador.  ---------------------------------------------------------------------------------------- 0055
+     */
+    public void removeByTitle(String songTitle){
+        Iterator<Track> it = tracks.iterator();
+        while(it.hasNext()){
+            Track a = it.next();
+            if(a.getTitle().contains(songTitle)){
                 it.remove();
             }
         }
