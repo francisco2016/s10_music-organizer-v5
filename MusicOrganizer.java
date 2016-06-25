@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * A class to hold details of audio tracks.
@@ -44,7 +45,7 @@ public class MusicOrganizer
     /**
      * añade un método a la clase MusicOrganizer llamado findInTitle que tome un único parámetro de tipo String y
      * muestre por pantalla la información de los tracks que contienen dicha cadena en el título de la canción.
-     * -------------------------------------------------  0052
+     * -------------------------------------------------------------------------------------------------------------  0052
      */
     public void findInTitle(String cadena){//necesitamos un for para recorrer la colección de trakc.
         for(Track track: tracks){
@@ -56,7 +57,7 @@ public class MusicOrganizer
 
     /**
      *para poder fijar el valor del atributo anoEdit de la cl Track a un determinado track del organizador.
-     * ------------------------------------------------ 0053
+     * --------------------------------------------------------------------------------------------------------------- 0053
      */
     public void setAnoEdit2(int index, int anoEdicion){
         tracks.get(index).setAnoEdicion(anoEdicion);
@@ -64,7 +65,7 @@ public class MusicOrganizer
 
     /**
      * isPlaying que cuando sea invocado informe por pantalla de si en este momento se está reproduciendo un track completo o no 
-     * ----------------------------------------------------------------- 00 54
+     * --------------------------------------------------------------------------------------------------------------- 00 54
      */
     public void isPlaying(){
         if(estaRepro == true){
@@ -76,7 +77,19 @@ public class MusicOrganizer
             System.out.println("En este momento no se está reproduciendo ninguno de los tracks.");
         }
     }
-
+    
+    /**
+     * que muestre los detalles de todos los tracks almacenados en un organizador usando un iterador. ---------------- 0055
+     */
+    public void listAllTrackWithIterator(){
+        Iterator<Track> it = tracks.iterator();
+        while(it.hasNext()){
+            Track a = it.next();
+            System.out.println("--          --");
+            System.out.println(a.getDetails());
+        }
+    }
+    
     /**
      * Add a track to the collection.
      * @param track The track to be added.
