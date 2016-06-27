@@ -20,15 +20,15 @@ public class MusicOrganizer
     private boolean estaRepro;
 
     /**
-     * Create a MusicOrganizer
+     * lee pasamos al constructor un parámetro para elegir la carpeta donde está la música que queremos reproducir.
      */
-    public MusicOrganizer()
+    public MusicOrganizer(String folderName)
     {
         tracks = new ArrayList<Track>();
         player = new MusicPlayer();
         reader = new TrackReader();
         estaRepro = false;      //--------------------------- 0054
-        readLibrary("audio");
+        readLibrary(folderName);
         System.out.println("Music library loaded. " + getNumberOfTracks() + " tracks.");
         System.out.println();
     }
