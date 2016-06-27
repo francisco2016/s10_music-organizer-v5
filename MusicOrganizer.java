@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
-
+import java.util.Collections;
 /**
  * A class to hold details of audio tracks.
  * Individual tracks may be played.
@@ -78,7 +78,7 @@ public class MusicOrganizer
             System.out.println("En este momento no se está reproduciendo ninguno de los tracks.");
         }
     }
-    
+
     /**
      * que muestre los detalles de todos los tracks almacenados en un organizador usando un iterador. ---------------- 0055
      */
@@ -90,7 +90,7 @@ public class MusicOrganizer
             System.out.println(a.getDetails());
         }
     }
-    
+
     /**
      *  que permita eliminar del organizador los tracks que contengan un determinado artista usando un iterador. ------- 0055
      */
@@ -103,7 +103,7 @@ public class MusicOrganizer
             }
         }
     }
-    
+
     /**
      *permita eliminar del organizador los tracks que contengan una determinada cadena en el título de la canción
      *usando un iterador.  ---------------------------------------------------------------------------------------- 0055
@@ -117,7 +117,7 @@ public class MusicOrganizer
             }
         }
     }
-    
+
     /**
      * reproduzca una de las canciones del organizador al azar. --------------------------------------------------  0057
      */
@@ -125,9 +125,26 @@ public class MusicOrganizer
         Random aleatorio = new Random();
         int trackAleatorio = aleatorio.nextInt(tracks.size());
         playTrack(trackAleatorio);
-    
+
     }
-    
+
+    /**
+     *permita reproducir los primeros segundos de cada canción en orden aleatorio y : -----------------------------  0057
+     *Cada canción debe reproducirse una única vez y deben reproducirse todas las canciones.
+     *Los contadores de reproducción deben actualizarse correctamente.
+     *Debe mostrar por pantalla los detalles de la canción que está sonando en este momento.
+     *La forma de solucionarlo debe basarse en el uso del método shuffle de la clase Collections que deberás investigar en Internet.
+     */
+    public void playShuffle(){
+        Collections.shuffle(tracks);
+        for (Track track: tracks) {
+            track.vecesReproducida();
+             System.out.println("Now playing: " + track.getDetails()  );
+                         player.playSample(track.getFilename());
+           // tracks.remove(track);
+        }
+    }
+
     /**
      * Add a track to the collection.
      * @param track The track to be added.
