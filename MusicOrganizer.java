@@ -139,11 +139,35 @@ public class MusicOrganizer
         Collections.shuffle(tracks);
         for (Track track: tracks) {
             track.vecesReproducida();
-             System.out.println("Now playing: " + track.getDetails()  );
-                         player.playSample(track.getFilename());
-           // tracks.remove(track);
+            System.out.println("Now playing: " + track.getDetails()  );
+            player.playSample(track.getFilename());
         }
+        stopPlaying();
     }
+
+    /**
+     * permita reproducir los primeros segundos de cada canción en orden aleatorio y : -----------------------------  0057
+     * esté basado en hacer una copia de la colección de tracks que ya tenemos.
+     */
+    public void playSuffle2(){
+      //para hacer una copia de la colección de Track, se necesitan las siguientes dos líneas de código.
+      ArrayList<Track> copia = new ArrayList<>();
+      copia = (ArrayList)tracks.clone(); //En la VL copia está almacenada una copia de la colección de Track.
+      int numRepro = 0;  // VL necesaria para el funcionamiento del siguiente bucle.
+      while(numRepro < tracks.size()){
+          Random aleatorio = new Random();
+          int aleatorio2 = aleatorio.nextInt(copia.size());//selección aleatoria de un track de la copia!!
+          
+          Track trackElegido = copia.get(aleatorio2);// el track seleccionado en cada iteración es almacenado en una VL de tipo
+          trackElegido.vecesReproducida();                                                     // Track, con la que haremos las operaciones pedidas en el enunciado.
+          System.out.println("Datos del tema: " +trackElegido.getDetails());
+          player.playSample(trackElegido.getFilename());//reproduzco el track aleatorio con el mt. playSample de la cl Track.
+
+          copia.remove(trackElegido);                               
+          numRepro ++;//aumentamos la variable en cada iteración para que pueda finalizar el bucle while.
+      }
+      System.out.println();
+    }    
 
     /**
      * Add a track to the collection.
